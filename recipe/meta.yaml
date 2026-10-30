@@ -1,5 +1,5 @@
 {% set version = "3.16.0" %}
-{% set build = 5 %}
+{% set build = 6 %}
 
 # mpi must be defined for conda-smithy lint
 {% set mpi = mpi or 'nompi' %}
@@ -29,6 +29,10 @@ source:
     # https://github.com/conda-forge/hdf5-feedstock/pull/319
     # https://github.com/h5py/h5py/pull/2955
     - 2955-dont-warn-hdf5-new-version.patch
+    - 3001-SEC-DEP-upgrade-GHA-dependencies-depending-on-locked.patch
+    - 3002-Build-deps-Bump-certifi-from-2026.7.22-to-2026.10.19.patch
+    - 3004-SEC-upgrade-pypa-cibuildwheel-to-4.3.4.patch
+    - 3011-SEC-upgrade-pypa-cibuildwheel-to-4.3.5.patch
 
 build:
   number: {{ build }}

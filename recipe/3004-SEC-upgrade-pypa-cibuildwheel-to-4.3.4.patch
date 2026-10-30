@@ -1,0 +1,43 @@
+From b22f039debbe77a8171bcd59a6abaccaf9f3cdcb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Cl=C3=A9ment=20Robert?= <cr52@protonmail.com>
+Date: Thu, 22 Oct 2026 16:01:06 +0200
+Subject: [PATCH 3/4] SEC: upgrade pypa/cibuildwheel to 4.3.4
+
+---
+ .github/workflows/build_wheels.yml | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/.github/workflows/build_wheels.yml b/.github/workflows/build_wheels.yml
+index 00ee4249..4edf4c18 100644
+--- a/.github/workflows/build_wheels.yml
++++ b/.github/workflows/build_wheels.yml
+@@ -121,7 +121,7 @@ jobs:
+ 
+       # Also build a future-compatible abi3 wheel
+       # this comes first to avoid inter-job pollution which then fails abi3audit
+-      - uses: pypa/cibuildwheel@f11181315571b24e4a3c67f1a828532793f2df55 # v4.3.2
++      - uses: pypa/cibuildwheel@b9e566a2b284570af229f6c2a33673410d0389a3 # v4.3.4
+         if: github.event_name == 'schedule' ||
+             (
+               (
+@@ -140,7 +140,7 @@ jobs:
+           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: ''
+ 
+       # Now actually build the wheels
+-      - uses: pypa/cibuildwheel@f11181315571b24e4a3c67f1a828532793f2df55 # v4.3.2
++      - uses: pypa/cibuildwheel@b9e566a2b284570af229f6c2a33673410d0389a3 # v4.3.4
+         env:
+           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: ''
+ 
+@@ -178,7 +178,7 @@ jobs:
+       - run: bash ./ci/triage_build.sh "${{ matrix.arch }}" "${{ github.event.pull_request.head.sha || github.sha }}"
+ 
+       # Now actually build the wheels
+-      - uses: pypa/cibuildwheel@f11181315571b24e4a3c67f1a828532793f2df55 # v4.3.2
++      - uses: pypa/cibuildwheel@b9e566a2b284570af229f6c2a33673410d0389a3 # v4.3.4
+         env:
+           CIBW_ARCHS: ${{ matrix.arch }}
+           CIBW_BUILD: "cp311-*"
+-- 
+2.55.0.windows.4
+
